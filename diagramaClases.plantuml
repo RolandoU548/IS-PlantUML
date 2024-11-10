@@ -1,0 +1,38 @@
+@startuml ClasesJuego
+
+title Diagrama de \nClases
+
+class Equipo {
+  # nombre: String
+  - registro: String
+}
+
+class Jugador {
+  - numero: Integer
+  # posicion: String
+  # esCapitan: Boolean
+}
+
+class Entrenador {
+  # nivelAcreditacion: String
+  # añosExperiencia: Integer
+}
+
+class Juego {
+  # localidad: String
+  # puntuacion: String
+}
+
+class Persona {
+  - nombre: String
+  # telefono: String
+  # direccion: String
+}
+
+Equipo *-- "6..20" Jugador
+Entrenador "0..*" --o "0..*" Equipo
+Equipo "2" -- Juego : Compiten
+
+Jugador --|> Persona
+Entrenador --|> Persona
+@enduml

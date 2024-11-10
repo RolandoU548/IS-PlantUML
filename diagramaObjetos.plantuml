@@ -1,0 +1,109 @@
+@startuml ObjetosJuego
+
+title Diagrama de \nObjetos
+
+object equipoVenezuela {
+  nombre = "Venezuela"
+  registro = "VEN123"
+}
+
+object jugadorVenezuela1 {
+  numero = 7
+  posicion = "Central"
+  esCapitan = true
+}
+
+object personaJugadorVenezuela1 {
+  nombre = "Juan Pérez"
+  telefono = "+58 123 4567"
+  direccion = "Caracas"
+}
+
+object jugadorVenezuela2 {
+  numero = 5
+  posicion = "Acarreero"
+  esCapitan = false
+}
+
+object personaJugadorVenezuela2 {
+  nombre = "Luis Gómez"
+  telefono = "+58 987 6543"
+  direccion = "Maracaibo"
+}
+
+object entrenadorVenezuela {
+  nivelAcreditacion = "Avanzado"
+  añosExperiencia = 15
+}
+
+object personaEntrenadorVenezuela {
+  nombre = "Carlos Rodríguez"
+  telefono = "+58 555 0000"
+  direccion = "Barquisimeto"
+}
+
+object equipoColombia {
+  nombre = "Colombia"
+  registro = "COL456"
+}
+
+object jugadorColombia1 {
+  numero = 10
+  posicion = "Central"
+  esCapitan = true
+}
+
+object personaJugadorColombia1 {
+  nombre = "Camilo Torres"
+  telefono = "+57 321 7654"
+  direccion = "Bogotá"
+}
+
+object jugadorColombia2 {
+  numero = 8
+  posicion = "Acarreero"
+  esCapitan = false
+}
+
+object personaJugadorColombia2 {
+  nombre = "Andrés Mejía"
+  telefono = "+57 987 654"
+  direccion = "Medellín"
+}
+
+object entrenadorColombia {
+  nivelAcreditacion = "Intermedio"
+  añosExperiencia = 8
+}
+
+object personaEntrenadorColombia {
+  nombre = "Juanita García"
+  telefono = "+57 420 2420"
+  direccion = "Cali"
+}
+
+object juegoPanamericano {
+  localidad = "Chile"
+  puntuacion = "3-2" 
+}
+
+equipoVenezuela *-- jugadorVenezuela1
+equipoVenezuela *-- jugadorVenezuela2
+equipoVenezuela o-- entrenadorVenezuela
+
+jugadorVenezuela1 --|> personaJugadorVenezuela1
+jugadorVenezuela2 --|> personaJugadorVenezuela2
+entrenadorVenezuela --|> personaEntrenadorVenezuela
+
+equipoColombia *-- jugadorColombia1
+equipoColombia *-- jugadorColombia2
+equipoColombia o-- entrenadorColombia
+
+jugadorColombia1 --|> personaJugadorColombia1
+jugadorColombia2 --|> personaJugadorColombia2
+entrenadorColombia --|> personaEntrenadorColombia
+
+equipoVenezuela -- juegoPanamericano : "Compiten"
+equipoColombia -- juegoPanamericano : "Compiten"
+
+@enduml
