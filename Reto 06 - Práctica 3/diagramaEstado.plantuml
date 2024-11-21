@@ -1,0 +1,43 @@
+@startuml venta
+[*] --> Encargando_Producto
+
+state fork_state1 <<fork>>
+Encargando_Producto --> fork_state1
+fork_state1 --> Pagando
+fork_state1 --> Validando
+
+Validando --> Cobrando_Pago
+
+Pagando --> Obteniendo_Producto
+
+state c <<choice>>
+ 
+Obteniendo_Producto --> c
+c --> Enviando_Urgente : [urgente]
+c --> Enviando_Ordinario : [no urgente]
+
+state join_state1 <<join>>
+
+state join_state2 <<join>>
+Enviando_Urgente --> join_state2
+Enviando_Ordinario --> join_state2
+join_state2 --> join_state1
+
+state fork_state2 <<fork>>
+Cobrando_Pago --> fork_state2
+fork_state2 --> Obteniendo_Producto
+fork_state2 --> join_state1
+
+join_state1 --> Dando_Cervezas
+
+state fork_state3 <<fork>>
+Dando_Cervezas --> fork_state3
+fork_state3 --> Añadiendo_A_Lista_Satisfechos
+fork_state3 --> Enviando_Recibo
+
+state join_state3 <<join>>
+Añadiendo_A_Lista_Satisfechos --> join_state3
+Enviando_Recibo --> join_state3
+
+join_state3 --> [*]
+@enduml
