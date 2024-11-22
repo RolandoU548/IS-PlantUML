@@ -1,0 +1,12 @@
+@startuml venta
+agent ":Registro" as registro
+agent ":Catalogo" as catalogo
+agent ":Venta" as venta
+
+registro -- catalogo : "1: getEspecificacion(id)" >
+catalogo -- registro: "2: espec" >
+registro -- venta : "3: crearLineaVenta(espec, cant)" >
+venta -- venta: "4: añadir(new LineaVenta(espec, cant))" > 
+venta -- registro: "5: venta" >
+
+@enduml
